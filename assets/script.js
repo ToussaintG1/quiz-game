@@ -134,7 +134,6 @@ function selectAnswer(e) {
         //If NOT true, add the class name "incorrect"
     } else {
         selectedBtn.classList.add("incorrect")
-        score--;
     }
     
     //For each button, check data set. If true, add class "correct" to highlight

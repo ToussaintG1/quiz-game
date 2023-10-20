@@ -1,6 +1,7 @@
 //All questions in the Quiz
 const questions = [
     {
+        id: 0,
         // Commonly used data types DO NOT include : Booleans
         question: "Commonly used data types DO NOT include:",
         answers: [
@@ -12,6 +13,7 @@ const questions = [
 
     },
     {
+        id: 1,
         // The condition in an if/else statement is enclosed within ________. : Parenthesis
         question: "The condition in an if/else statement is enclosed within ________.",
         answers: [
@@ -22,6 +24,7 @@ const questions = [
         ]
     },
     {
+        id: 2,
         // Arrays in JavaScript can be used to store ________. : All of the above
         question: "Arrays in JavaScript can be used to store ________.",
         answers: [
@@ -32,6 +35,7 @@ const questions = [
         ]
     },
     {
+        id: 3,
        // String values must be enclosed within ________ when being assigned to variables. : Quotes
         question: "String values must be enclosed within ________ when being assigned to variables.",
         answers: [
@@ -42,6 +46,7 @@ const questions = [
         ]
     },
     {
+        id: 4,
      // A very useful tool used during the development and debugging for printing content to the debugger is: Console log
     question: "A very useful tool used during the development and debugging for printing content to the debugger is:",
     answers: [
@@ -52,6 +57,7 @@ const questions = [
     ]
 },
 {
+    id: 5,
     // How do you write 'Hello World' in an alert box? : alert('Hello World')
     question: "How do you write 'Hello World' in an alert box",
     answers: [
@@ -62,26 +68,61 @@ const questions = [
     ]
 },
 {
+    id: 6,
    // How do you create a function in JavaScript : function = myFunction()
    question: "How do you create a function in JavaScript",
     answers: [
-        {text: "function = myFunction()", correct: true},
-        {text: "function myFunction()", correct: false},
+        {text: "function myFunction(){}", correct: true},
+        {text: "function = myFunction()", correct: false},
         {text: "function: myFunction()", correct: false},
+        {text: "function[]", correct: false}
     ]
 }
     ];
 
+// ----------------------------------------------------------------
 
-    //Attach constants to ID elements in the HTML
-const questionElement = document.getElementById("question");
+
+    //Main Variables
+var timer = document.getElementById("timer");
+var start = document.querySelector(".start-button");
+var quiz = document.getElementById("quiz");
+var timeLeft = 90;
+
+
+// Question/Answer Variables
+var question = document.getElementById("question");
+var id = 0;
+
+var answers = document.querySelectorAll(".answer")
+
+// Highscore board at end of quiz
+var scoreWrapper = document.getElementById("score");
+var scoreText = document.getElementById("score-text");
+
+// Scoreboard variables
+var scoreBoard = document.querySelector(".score-board");
+var form = document.getElementById("form");
+var userInitials = document.getElementById("intials");
+var scoreList = document.getElementById("score-list");
+var userScores = [];
+
+// Button Variables
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn")
+var viewHighscoresBtn = document.querySelector(".highscore");
+var tryAgain = document.querySelector(".try-again");
+var startBtn = document.getElementById("quizStartButton");
+var returnBtn = document.getElementById("returnBtn");
+var clearBtn = document.getElementById("clearBtn");
+var returnStrtBtn = document.querySelector(".return-start");
+
 
 //Start questions and score at 0
 let currentQuestionIndex = 0;
 let score = 0;
 
+// -----------Functions---------
 //Start Quiz
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -165,6 +206,34 @@ function nextQuestion() {
     }
 }
 
+function showUserScores() {
+    scoreList.innerHTML = "";
+
+    for (var i = 0; i < userScores.length; i++) {
+        var score = userScores[i];
+
+        var li = document.createElement("li");
+        li.textContent = score;
+        li.setAttribute("data-index", i);
+
+        scoreList.appendChild(li);
+    }
+};
+
+// Show scores on start of page
+function showScores() {
+    var storedScores = JSON.parse(localStorage.getItem("userScores"));
+    if (storedScores !== null) {
+        userScores = storedScores;
+    };
+    // add the scores on page start
+    showUserScores();
+};
+// Saves user scores
+function storeScore() {
+    localStorage.setItem("userScores", JSON.stringify(userScores));
+};
+
 //When clicking on the "Next" button, it will take you to the next question.
 nextButton.addEventListener("click", ()=> {
     if(currentQuestionIndex < questions.length){
@@ -173,6 +242,9 @@ nextButton.addEventListener("click", ()=> {
         startQuiz();
     }
 })
+
+//When Clicking Start Quiz button the quick will start
+quizBtn.addEventListener('click', startQuiz);
 
 //Timer Code, if time runs out. Show score and Game is over
 

@@ -8,15 +8,23 @@
     <title>Toussaint's Coding Quiz</title>
 </head>
 <body>
+    
     <header>Toussaint's Coding Quiz</header>
-    <div class="app">
-        <div class="quiz-header"> 
-            <div class="title"><h1>Coding Challenge</h1></div>
-        <div class="timer">
-            <div class="time-text">Time Left:</div>
-            <div id="timer-sec">15 </div>
-        </div>   
+    <header>
+        <div id="highscore">
+            <button class="highscore">View high scores</button>
         </div>
+        <div class="time">
+            Time Left: <span id="timer"></span>
+            <div class="start-button">
+                <button class="start" id="quizStartButton">Start</button>
+            </div>
+        </div>
+    </header>
+    <!-- Start -->
+   
+<!-- Quiz -->
+    
         <div class="quiz">
             <h2 id="question"> Question</h2>
             <div id="answer-buttons">
@@ -28,6 +36,50 @@
             <button id="next-btn">Next</button>
         </div>
     </div>
+    <!-- High Score Page -->
+    <section class="score-wrapper" style="display:none;" id="score">
+        <div class="score-container">
+            <div id="score-text"></div>
+        </div>
+
+
+        <button class="try-again">Try Again?</button>
+        <button class="return-start">Return To start</button>
+
+
+        <form class="form-container" id="form">
+            <input type="text" id="intials" placeholder="enter your intials and press enter" min="2" max="2" required />
+            <label for="initials" id="intials-label"></label>
+        </form>
+    </section>
+
+    <!--Scoreboard-->
+    <section class="score-board" style="display: none;">
+        <div class="scoreboard-container">
+            <ul id="score-list"></ul>
+        </div>
+
+        <div class="button-container">
+            <div>
+                <button id="returnBtn">Return</button>
+            </div>
+            <div>
+                <button onclick="reloadScoreboard()" id="clearBtn">Clear Scores</button>
+            </div>
+        </div>
+    </section>
     <script src="./assets/script.js"></script>  
 </body>
 </html>
+
+<!-- oussaint, this is a huge step as assignments go 
+    and you have a solid foundation. You just need to 
+    add a start button, subtract time when a question 
+    is answered wrong, have the timer reset when the user
+    is finished, get a prompt to the user to get their 
+    initials, use that data in conjunction with local 
+    storage to save it to a high score page, and add the 
+    live link to your README. Please reach out to your 
+    instructor and/or support network to get headed in the 
+    right direction. We are all here to help you succeed!
+    Keep up the  -->

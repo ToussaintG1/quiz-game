@@ -9,34 +9,53 @@
 </head>
 <body>
     
-    <header>Toussaint's Coding Quiz</header>
+
+<h1>Toussaint's Coding Quiz</h1>
+    <!--Header-->
     <header>
         <div id="highscore">
             <button class="highscore">View high scores</button>
         </div>
         <div class="time">
             Time Left: <span id="timer"></span>
-            <div class="start-button">
-                <button class="start" id="quizStartButton">Start</button>
-            </div>
         </div>
     </header>
-    <!-- Start -->
-   
-<!-- Quiz -->
-    
-        <div class="quiz">
-            <h2 id="question"> Question</h2>
-            <div id="answer-buttons">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
-            </div>
-            <button id="next-btn">Next</button>
-        </div>
+
+
+
+
+    <!--Start Button-->
+    <div class="start-button">
+        <p id="start-text">This is Toussaint Gilbert's Java Script Quiz. 
+            This quiz contains 6 total questions. 
+            Answering a question wrong results in a deduction of 10 seconds from your total
+            time
+        </p>
+        <button class="start" id="quizStartButton">Start</button>
     </div>
-    <!-- High Score Page -->
+
+    <!--Quiz Goes Here-->
+    <section class="quiz-wrapper" style="display:none;" id="quiz">
+        <!--Question Goes Here-->
+        <div class="q-container" id="question">
+            question
+        </div>
+        <!--Answer Goes Here-->
+        <div class="a-container">
+            <div class="buttons">
+                <button class="answer" id="answer1">Answer 1</button>
+                <button class="answer" id="answer2">Answer 2</button>
+                <button class="answer" id="answer3">Answer 3</button>
+                <button class="answer" id="answer4">Answer 4</button>
+            </div>
+            <div>
+                <span id="result"></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Ending score after quiz is over area-->
     <section class="score-wrapper" style="display:none;" id="score">
         <div class="score-container">
             <div id="score-text"></div>
@@ -61,18 +80,22 @@
 
         <div class="button-container">
             <div>
-                <button id="returnBtn">Return</button>
+                <button id="returnButton">Return</button>
             </div>
             <div>
-                <button onclick="reloadScoreboard()" id="clearBtn">Clear Scores</button>
+                <button onclick="reloadScoreboard()" id="clearButton">Clear Scores</button>
             </div>
         </div>
     </section>
-    <script src="./assets/script.js"></script>  
+
+
+
+
+    <script src="./assets/script.js"></script>
 </body>
 </html>
 
-<!-- oussaint, this is a huge step as assignments go 
+<!-- Toussaint, this is a huge step as assignments go 
     and you have a solid foundation. You just need to 
     add a start button, subtract time when a question 
     is answered wrong, have the timer reset when the user
